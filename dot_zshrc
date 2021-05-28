@@ -57,6 +57,7 @@ zstyle ':completion:*' group-name ''
 
 # history
 HISTFILE=~/.zsh_history
+HISTTIMEFORMAT='%F %T '
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
@@ -89,3 +90,45 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light denysdovhan/spaceship-prompt
+
+# alias
+alias ce='chezmoi edit'
+alias ca='chezmoi apply'
+alias cen='chezmoi edit ~/.config/nvim/init.vim'
+alias fce='chezmoi edit -a ~/$(chezmoi managed | fzf)'
+
+# function
+memo(){
+    local memo
+    local title
+    if [[ -n $1 ]]
+    then
+        title=$1
+    else
+        title=$(date "+%Y-%m-%d-%H%M")
+    fi
+    memo="/home/yuhta/Dropbox/textfiles/memo/${title}.md"
+    nvim  $memo
+}
+
+sme(){
+    local memo
+    memo=$(fd . -t file -e md ~/Dropbox/textfiles | fzf)
+    if [[ -n $memo ]]
+    then
+        nvim -- $memo
+    fi
+}
+
+shis(){
+    history -fd 500 | fzf
+}
+
+update(){
+    sudo apt update
+    echo "--------------------------------------"
+    echo "--------------------------------------"
+    brew update
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

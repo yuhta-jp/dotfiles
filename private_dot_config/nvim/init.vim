@@ -11,16 +11,56 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-"theme
-Plug 'tomasiser/vim-code-dark'
+"Bug fix
+Plug 'antoinemadec/FixCursorHold.nvim' "requirement for fern
+
+"fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+
+"File manager
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+
+"Git
+Plug 'airblade/vim-gitgutter'
+
+"Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
-Plug 'antoinemadec/FixCursorHold.nvim' "requirement for fern
-Plug 'lambdalisue/fern.vim'
+Plug 'mattn/emmet-vim'
+
+"Utilities
+Plug 'junegunn/vim-easy-align'
+Plug 'tyru/open-browser.vim'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'tomtom/tcomment_vim'
+Plug 'alvan/vim-closetag'
+Plug 'simeji/winresizer'
+Plug 'junegunn/vim-easy-align'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+"Syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'luochen1990/rainbow'
+
+"Theme, status line, style
+Plug 'marko-cerovac/material.nvim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"Not working
 Plug 'Yggdroot/indentLine'
 
 call plug#end()
 "##################################
+xmap ga <Plug>(EasyAlign)
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>nmap ga <Plug>(EasyAlign)
+set timeoutlen=500
+
 
 " to do search options
 
@@ -47,7 +87,9 @@ set relativenumber
 "set cursorline
 set helpheight=999 "show full size help
 set background=dark
-colorscheme codedark
+"colorscheme codedark
+colorscheme material
+let g:material_style = 'darker'
 set mouse=a
 set visualbell
 set scrolloff=8
@@ -120,4 +162,13 @@ set wildmenu wildmode=list:longest,full
 "##################################
 "keymaps
 "##################################
-let mapleader = "\<Space>""
+let mapleader = "\<Space>"
+vnoremap ? :'<,'>TComment<CR> "depend on tcommnet
+
+
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap ss :<C-u>sp<CR><C-w>j
+nnoremap sv :<C-u>vs<CR><C-w>l
