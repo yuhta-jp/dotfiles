@@ -41,33 +41,39 @@ Plug 'simeji/winresizer'
 Plug 'junegunn/vim-easy-align'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
-"Syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'luochen1990/rainbow'
-
 "Theme, status line, style
 Plug 'marko-cerovac/material.nvim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
-"Not working
-Plug 'Yggdroot/indentLine'
+"ONLY Nightly
+if has('nvim-0.5')
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+"Syntax highlighting
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'luochen1990/rainbow'
+endif
 
 call plug#end()
+"##################################
+if has('nvim-0.5')
+    colorscheme material
+    let g:material_style = 'darker'
+endif
+
+if has('unix')
+    let g:python3_host_prog = '/usr/bin/python3'
+endif
+if has('mac')
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+
 "##################################
 xmap ga <Plug>(EasyAlign)
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>nmap ga <Plug>(EasyAlign)
 set timeoutlen=500
-
-
-" to do search options
-
 set hidden
-
-"##################################
-let g:python3_host_prog = '/usr/bin/python3'
 set history=10000
 set encoding=utf-8
 set linebreak
@@ -88,8 +94,6 @@ set relativenumber
 set helpheight=999 "show full size help
 set background=dark
 "colorscheme codedark
-colorscheme material
-let g:material_style = 'darker'
 set mouse=a
 set visualbell
 set scrolloff=8
