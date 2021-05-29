@@ -95,9 +95,12 @@ zinit light denysdovhan/spaceship-prompt
 alias ce='chezmoi edit'
 alias ca='chezmoi apply'
 alias cen='chezmoi edit ~/.config/nvim/init.vim'
-alias fce='chezmoi edit -a ~/$(chezmoi managed | fzf)'
 
 # function
+fce(){
+    chezmoi edit -a ~/$(chezmoi managed --include=files | fzf)
+}
+
 memo(){
     local memo
     local title
