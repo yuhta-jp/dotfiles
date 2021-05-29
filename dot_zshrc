@@ -96,6 +96,7 @@ alias ce='chezmoi edit'
 alias ca='chezmoi apply'
 alias cen='chezmoi edit ~/.config/nvim/init.vim'
 
+export FZF_DEFAULT_OPTS='--height=40 --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 # function
 fce(){
     chezmoi edit -a ~/$(chezmoi managed --include=files | fzf)
