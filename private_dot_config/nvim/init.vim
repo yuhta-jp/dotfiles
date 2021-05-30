@@ -53,6 +53,9 @@ if has('nvim-0.5')
 "Syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'luochen1990/rainbow'
+"file manager
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
 endif
 
 call plug#end()
