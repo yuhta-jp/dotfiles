@@ -75,6 +75,7 @@ bindkey '^R' history-incremental-pattern-search-backward # enable wild card in s
 # style
 autoload -Uz colors
 colors
+export TERM=xterm-256color
 
 # cd command
 setopt auto_cd
@@ -95,6 +96,8 @@ zinit light denysdovhan/spaceship-prompt
 alias ce='chezmoi edit'
 alias ca='chezmoi apply'
 alias cen='chezmoi edit ~/.config/nvim/init.vim'
+alias t='tmux'
+alias n='nvim'
 
 export FZF_DEFAULT_OPTS='--height=40 --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 # function
@@ -136,3 +139,6 @@ update(){
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_PLUG=v:preview-tui
