@@ -172,7 +172,7 @@ set wildmenu wildmode=list:longest,full
 let mapleader = "\<Space>"
 vnoremap ? :'<,'>TComment<CR> "depend on tcommnet
 
-
+inoremap <silent> jk <ESC>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
