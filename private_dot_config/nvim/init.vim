@@ -43,11 +43,9 @@ Plug 'junegunn/vim-easy-align'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 "Theme, status line, style
-Plug 'marko-cerovac/material.nvim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'ryanoasis/vim-devicons'
-Plug 'lukas-reineke/indent-blankline.nvim'
-"ONLY Nightly
+"plugins ONLY for Neovim Nightly
 if has('nvim-0.5')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -57,15 +55,18 @@ if has('nvim-0.5')
 "file manager
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
     Plug 'kyazdani42/nvim-tree.lua'
+"indent
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 endif
 
 call plug#end()
-let g:indent_blankline_use_treesitter = v:true
-let g:indent_blankline_filetype_exclude = ['help']
 "##################################
+"config ONLY for Neovim Nightly
 if has('nvim-0.5')
-    colorscheme material
-    let g:material_style = 'darker'
+    let g:indent_blankline_use_treesitter = v:true
+    let g:indent_blankline_filetype_exclude = ['help']
+    let g:indent_blankline_space_char = '.'
+    let g:indent_blankline_show_first_indent_level = v:false
 endif
 if has('unix')
     let g:python3_host_prog = '/usr/bin/python3'
@@ -97,8 +98,8 @@ set nu
 set relativenumber
 set cursorline
 set helpheight=999 "show full size help
-"set background=dark
-"colorscheme codedark
+set background=dark
+colorscheme codedark
 set mouse=a
 set visualbell
 set scrolloff=8
