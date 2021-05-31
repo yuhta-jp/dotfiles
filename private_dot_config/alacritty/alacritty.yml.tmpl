@@ -2,7 +2,7 @@
 env:
   TERM: alacritty
 font:
-  size: 16
+  size: 14
   normal:
     family: MesloLGS NF
 window:
@@ -10,10 +10,19 @@ window:
   padding:
     x: 5
     y: 5
-background_opacity: 0.95
+      #background_opacity: 0.95
+scrolling:
+  history: 10000
 live_config_reload: true
+dynamic_padding: false
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  save_to_clipboard: true
 key_bindings:
 {{- if eq .chezmoi.os "darwin" }}
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+# tmux prefix
   - { key: A, mods: Command, chars: "\x01"}
 # cancel: cmd + shift + c
   - { key: C, mods: Command|Shift, chars: "\x03"}
