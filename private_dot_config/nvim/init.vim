@@ -32,6 +32,7 @@ Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim'
 
 "Utilities
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/vim-easy-align'
 Plug 'tyru/open-browser.vim'
 Plug 'bronson/vim-trailing-whitespace'
@@ -45,7 +46,7 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'marko-cerovac/material.nvim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'lukas-reineke/indent-blankline.nvim'
 "ONLY Nightly
 if has('nvim-0.5')
     Plug 'vim-airline/vim-airline'
@@ -59,12 +60,13 @@ if has('nvim-0.5')
 endif
 
 call plug#end()
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_filetype_exclude = ['help']
 "##################################
 if has('nvim-0.5')
     colorscheme material
     let g:material_style = 'darker'
 endif
-
 if has('unix')
     let g:python3_host_prog = '/usr/bin/python3'
 endif
@@ -93,9 +95,9 @@ set title
 set wildmenu
 set nu
 set relativenumber
-"set cursorline
+set cursorline
 set helpheight=999 "show full size help
-set background=dark
+"set background=dark
 "colorscheme codedark
 set mouse=a
 set visualbell
@@ -171,7 +173,6 @@ set wildmenu wildmode=list:longest,full
 "##################################
 let mapleader = "\<Space>"
 vnoremap ? :'<,'>TComment<CR> "depend on tcommnet
-
 inoremap <silent> jk <ESC>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k

@@ -11,9 +11,10 @@ endif
 call plug#begin('~/.vim/plugged')
 "theme
 Plug 'tomasiser/vim-code-dark'
-
+Plug 'Yggdroot/indentLine'
 call plug#end()
 "##################################
+let g:indentLine_setColors = 0
 
 " to do search options
 
@@ -107,4 +108,3 @@ set wildmenu wildmode=list:longest,full
 "##################################
 "theme
 "##################################
-
