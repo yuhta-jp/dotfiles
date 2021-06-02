@@ -75,7 +75,7 @@ bindkey '^R' history-incremental-pattern-search-backward # enable wild card in s
 # style
 autoload -Uz colors
 colors
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 # cd command
 setopt auto_cd
@@ -130,15 +130,9 @@ sme(){
 shis(){
     history -fd 500 | fzf
 }
-
-update(){
-    sudo apt update
-    echo "--------------------------------------"
-    echo "--------------------------------------"
-    brew update
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG=v:preview-tui
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
