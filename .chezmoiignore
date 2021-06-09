@@ -5,3 +5,8 @@
 {{- if ne .chezmoi.os "darwin" }}
 # work only if "macOS"
 {{- end }}
+{{- if ne .chezmoi.os "darwin" }}
+{{- if not ( contains "WSL" .chezmoi.kernel.osrelease) }}
+.config/alacritty
+{{- end }}
+{{- end }}
