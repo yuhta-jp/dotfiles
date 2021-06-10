@@ -61,6 +61,7 @@ endif
 
 call plug#end()
 filetype plugin indent on
+set visualbell t_vb=
 "##################################
 "config ONLY for Neovim Nightly
 if has('nvim-0.5')
@@ -88,7 +89,8 @@ set linebreak
 "##################################
 " Text options
 "##################################
-set clipboard+=unnamed
+"set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 "##################################
 " User Interface
