@@ -70,13 +70,14 @@ if has('nvim-0.5')
     let g:indent_blankline_space_char = '.'
     let g:indent_blankline_show_first_indent_level = v:false
 endif
-if has('unix')
-    let g:python3_host_prog = '/usr/bin/python3'
-endif
+
 if has('mac')
     let g:python3_host_prog = '/usr/local/bin/python3'
+elseif has('unix')
+    "let g:python3_host_prog = '/usr/bin/python3'
+    let g:python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
+    let g:node_host_prog = expand("$HOME/.volta/tools/image/packages/neovim/bin/neovim-node-host")
 endif
-
 "##################################
 xmap ga <Plug>(EasyAlign)
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>nmap ga <Plug>(EasyAlign)
