@@ -1,3 +1,4 @@
+# vim: set filetype=sh :
 source ~/.profile
 if  uname -r | grep -q WSL;then
 LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
